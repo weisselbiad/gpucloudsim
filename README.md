@@ -1,39 +1,36 @@
-# CloudSim: A Framework For Modeling And Simulation Of Cloud Computing Infrastructures And Services #
+## GPUCloudSim: an extension of CloudSim for modeling and simulation of GPUs in cloud data centers
 
-Cloud computing is the leading approach for delivering reliable, secure, fault-tolerant, sustainable, and scalable computational services. Hence timely, repeatable, and controllable methodologies for performance evaluation of new cloud applications and policies before their actual development are reqruied. Because utilization of real testbeds limits the experiments to the scale of the testbed and makes the reproduction of results an extremely difficult undertaking, simulation may be used.
+In order to satisfy graphical and computational requirements of end-users, today cloud providers offer GPU-enabled services. To ease-up conducting experimental studies on GPU-enabled cloud computing environments, we provide an extension to [CloudSim](http://cloudbus.org/cloudsim/) simulator. Our extension includes models and provisioning and scheduling policies to enable the modeling and simulation of GPUs in data centers.  
 
-CloudSim goal is to provide a generalized and extensible simulation framework that enables modeling, simulation, and experimentation of emerging Cloud computing infrastructures and application services, allowing its users to focus on specific system design issues that they want to investigate, without getting concerned about the low level details related to Cloud-based infrastructures and services.
+-----------------------------------------
+If you used the extension, please consider citing the following paper, 
+> Siavashi, A., Momtazpour, M. GPUCloudSim: an extension of CloudSim for modeling and simulation of GPUs in cloud data centers. J Supercomput 75, 2535–2561 (2019). 
+-----------------------------------------
 
-CloudSim is developed in [the Cloud Computing and Distributed Systems (CLOUDS) Laboratory](http://cloudbus.org/), at [the Computer Science and Software Engineering Department](http://www.csse.unimelb.edu.au/) of [the University of Melbourne](http://www.unimelb.edu.au/).
+We are constantly adding new features to the extension. Please consider reporting any issue you find helpful to improve the quality of the work.
 
-More information can be found on the [CloudSim's web site](http://cloudbus.org/cloudsim/).
+### Main features
 
+  * Support for modeling and simulation of large scale GPU-enabled cloud platforms
+  * Support for modeling and simulation of energy-aware GPU-equipped data centers
+  * Support for modeling and simulation of multi-video card servers
+  * Support for modeling and simulation of multi-GPU video cards
+  * Support for modeling and simulation of GPU-enabled VMs
+  * Support for simulation of mixed workload and heterogeneous infrastructure
+  * Support for user-defined GPU scheduling policies
+  * Support for user-defined GPU provisioning policies
+  * Support for modeling and simulation of GPU applications
+  * Support for user-defined GPU application scheduling policies
+  * Support for modeling and simulation of GPU remoting virtualization technology ([Siavashi et al. 2022](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4030263))
+  * Support for modeling and simulation of NVIDIA GRID GPU virtualization technology
+  * Support for modeling and simulation of full and para GPU virtualization technologies
+  * Support for modeling and simulation of virtualization-incurred performance overhead
+  * Support for modeling and simulation of interference among co-running GPU applications
 
-# Main features #
+### Download
 
-  * support for modeling and simulation of large scale Cloud computing data centers
-  * support for modeling and simulation of virtualized server hosts, with customizable policies for provisioning host resources to virtual machines
-  * support for modeling and simulation of application containers
-  * support for modeling and simulation of energy-aware computational resources
-  * support for modeling and simulation of data center network topologies and message-passing applications
-  * support for modeling and simulation of federated clouds
-  * support for dynamic insertion of simulation elements, stop and resume of simulation
-  * support for user-defined policies for allocation of hosts to virtual machines and policies for allocation of host resources to virtual machines
+This package contains CloudSim 4.0 with the latest version of the GPU extension.
 
+### Disclaimer
 
-# Download #
-
-The downloaded package contains all the source code, examples, jars, and API html files.
-
-# Publications #
-
-  * Anton Beloglazov, and Rajkumar Buyya, [Optimal Online Deterministic Algorithms and Adaptive Heuristics for Energy and Performance Efficient Dynamic Consolidation of Virtual Machines in Cloud Data Centers](http://beloglazov.info/papers/2012-optimal-algorithms-ccpe.pdf), Concurrency and Computation: Practice and Experience, Volume 24, Number 13, Pages: 1397-1420, John Wiley & Sons, Ltd, New York, USA, 2012.
-  * Saurabh Kumar Garg and Rajkumar Buyya, [NetworkCloudSim: Modelling Parallel Applications in Cloud Simulations](http://www.cloudbus.org/papers/NetworkCloudSim2011.pdf), Proceedings of the 4th IEEE/ACM International Conference on Utility and Cloud Computing (UCC 2011, IEEE CS Press, USA), Melbourne, Australia, December 5-7, 2011.
-  * **Rodrigo N. Calheiros, Rajiv Ranjan, Anton Beloglazov, Cesar A. F. De Rose, and Rajkumar Buyya, [CloudSim: A Toolkit for Modeling and Simulation of Cloud Computing Environments and Evaluation of Resource Provisioning Algorithms](http://www.buyya.com/papers/CloudSim2010.pdf), Software: Practice and Experience (SPE), Volume 41, Number 1, Pages: 23-50, ISSN: 0038-0644, Wiley Press, New York, USA, January, 2011. (Preferred reference for CloudSim)**
-  * Bhathiya Wickremasinghe, Rodrigo N. Calheiros, Rajkumar Buyya, [CloudAnalyst: A CloudSim-based Visual Modeller for Analysing Cloud Computing Environments and Applications](http://www.cloudbus.org/papers/CloudAnalyst-AINA2010.pdf), Proceedings of the 24th International Conference on Advanced Information Networking and Applications (AINA 2010), Perth, Australia, April 20-23, 2010.
-  * Rajkumar Buyya, Rajiv Ranjan and Rodrigo N. Calheiros, [Modeling and Simulation of Scalable Cloud Computing Environments and the CloudSim Toolkit: Challenges and Opportunities](http://www.cloudbus.org/papers/CloudSim-HPCS2009.pdf), Proceedings of the 7th High Performance Computing and Simulation Conference (HPCS 2009, ISBN: 978-1-4244-4907-1, IEEE Press, New York, USA), Leipzig, Germany, June 21-24, 2009.
-
-
-
-
-[![](http://www.cloudbus.org/logo/cloudbuslogo-v5a.png)](http://cloudbus.org/)
+This code is provided as is, and no guarantee is given that this code will preform in the desired way.
