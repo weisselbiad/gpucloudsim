@@ -11,7 +11,7 @@ import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.collections.Predicate;
 import org.cloudbus.cloudsim.Pe;
 import org.cloudbus.cloudsim.Vm;
-import org.cloudbus.cloudsim.gpu.hardware_assisted.GridVideoCardTags;
+import org.cloudbus.cloudsim.gpu.hardware_assisted.grid.GridVideoCardTags;
 import org.cloudbus.cloudsim.gpu.selection.PgpuSelectionPolicy;
 
 /**

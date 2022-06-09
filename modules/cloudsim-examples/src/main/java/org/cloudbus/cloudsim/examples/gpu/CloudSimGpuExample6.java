@@ -32,8 +32,8 @@ import org.cloudbus.cloudsim.gpu.VgpuScheduler;
 import org.cloudbus.cloudsim.gpu.VideoCard;
 import org.cloudbus.cloudsim.gpu.allocation.VideoCardAllocationPolicy;
 import org.cloudbus.cloudsim.gpu.allocation.VideoCardAllocationPolicySimple;
-import org.cloudbus.cloudsim.gpu.hardware_assisted.GridVideoCardTags;
-import org.cloudbus.cloudsim.gpu.hardware_assisted.GridVideoCardPowerModelK1;
+import org.cloudbus.cloudsim.gpu.hardware_assisted.grid.GridVideoCardPowerModelK1;
+import org.cloudbus.cloudsim.gpu.hardware_assisted.grid.GridVideoCardTags;
 import org.cloudbus.cloudsim.gpu.performance.models.PerformanceModel;
 import org.cloudbus.cloudsim.gpu.performance.models.PerformanceModelGpuConstant;
 import org.cloudbus.cloudsim.gpu.placement.GpuDatacenterBrokerEx;
@@ -47,6 +47,7 @@ import org.cloudbus.cloudsim.gpu.provisioners.GpuGddramProvisionerSimple;
 import org.cloudbus.cloudsim.gpu.provisioners.VideoCardBwProvisioner;
 import org.cloudbus.cloudsim.gpu.provisioners.VideoCardBwProvisionerShared;
 import org.cloudbus.cloudsim.gpu.remote.RemoteGpuDatacenterEx;
+import org.cloudbus.cloudsim.gpu.remote.RemoteGpuTask;
 import org.cloudbus.cloudsim.gpu.remote.RemoteGpuVmAllocationPolicySimple;
 import org.cloudbus.cloudsim.gpu.remote.RemoteVgpuSchedulerFairShareEx;
 import org.cloudbus.cloudsim.gpu.remote.RemoteVgpuTags;
@@ -195,8 +196,8 @@ public class CloudSimGpuExample6 {
 		UtilizationModel gddramUtilizationModel = new UtilizationModelFull();
 		UtilizationModel gddramBwUtilizationModel = new UtilizationModelFull();
 
-		GpuTask gpuTask = new GpuTask(gpuTaskId, taskLength, numberOfBlocks, taskInputSize, taskOutputSize,
-				requestedGddramSize, 0, gpuUtilizationModel, gddramUtilizationModel, gddramBwUtilizationModel);
+		GpuTask gpuTask = new RemoteGpuTask(gpuTaskId, taskLength, numberOfBlocks, taskInputSize, taskOutputSize,
+				requestedGddramSize, 1.5f, gpuUtilizationModel, gddramUtilizationModel, gddramBwUtilizationModel);
 
 		GpuCloudlet gpuCloudlet = new GpuCloudlet(gpuCloudletId, length, pesNumber, fileSize, outputSize,
 				cpuUtilizationModel, ramUtilizationModel, bwUtilizationModel, gpuTask, false);

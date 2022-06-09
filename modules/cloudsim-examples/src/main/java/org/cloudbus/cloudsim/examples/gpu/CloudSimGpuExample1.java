@@ -33,10 +33,10 @@ import org.cloudbus.cloudsim.gpu.VgpuScheduler;
 import org.cloudbus.cloudsim.gpu.VideoCard;
 import org.cloudbus.cloudsim.gpu.allocation.VideoCardAllocationPolicy;
 import org.cloudbus.cloudsim.gpu.allocation.VideoCardAllocationPolicyNull;
-import org.cloudbus.cloudsim.gpu.hardware_assisted.GridGpuVmAllocationPolicyDepthFirst;
-import org.cloudbus.cloudsim.gpu.hardware_assisted.GridVgpuSchedulerFairShare;
-import org.cloudbus.cloudsim.gpu.hardware_assisted.GridVgpuTags;
-import org.cloudbus.cloudsim.gpu.hardware_assisted.GridVideoCardTags;
+import org.cloudbus.cloudsim.gpu.hardware_assisted.grid.GridGpuVmAllocationPolicyDepthFirst;
+import org.cloudbus.cloudsim.gpu.hardware_assisted.grid.GridVgpuSchedulerFairShare;
+import org.cloudbus.cloudsim.gpu.hardware_assisted.grid.GridVgpuTags;
+import org.cloudbus.cloudsim.gpu.hardware_assisted.grid.GridVideoCardTags;
 import org.cloudbus.cloudsim.gpu.provisioners.GpuBwProvisionerShared;
 import org.cloudbus.cloudsim.gpu.provisioners.GpuGddramProvisionerSimple;
 import org.cloudbus.cloudsim.gpu.provisioners.VideoCardBwProvisioner;
@@ -52,7 +52,7 @@ import de.vandermeer.asciitable.AsciiTable;
 
 /**
  * This example demonstrates the use of gpu package in simulations. <br>
- * GPU virtualization mode: hardware-assisted <br>
+ * GPU virtualization mode: GRID <br>
  * Performance Model: off <br>
  * Interference Model: off <br>
  * Power Model: off
@@ -185,7 +185,7 @@ public class CloudSimGpuExample1 {
 		UtilizationModel gddramBwUtilizationModel = new UtilizationModelFull();
 
 		GpuTask gpuTask = new GpuTask(gpuTaskId, taskLength, numberOfBlocks, taskInputSize, taskOutputSize,
-				requestedGddramSize, 0, gpuUtilizationModel, gddramUtilizationModel, gddramBwUtilizationModel);
+				requestedGddramSize, gpuUtilizationModel, gddramUtilizationModel, gddramBwUtilizationModel);
 
 		GpuCloudlet gpuCloudlet = new GpuCloudlet(gpuCloudletId, length, pesNumber, fileSize, outputSize,
 				cpuUtilizationModel, ramUtilizationModel, bwUtilizationModel, gpuTask, false);

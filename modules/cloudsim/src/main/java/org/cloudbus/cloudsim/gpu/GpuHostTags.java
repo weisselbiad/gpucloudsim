@@ -1,6 +1,6 @@
 package org.cloudbus.cloudsim.gpu;
 
-import org.cloudbus.cloudsim.gpu.hardware_assisted.GridVideoCardTags;
+import org.cloudbus.cloudsim.gpu.hardware_assisted.grid.GridVideoCardTags;
 
 /**
  * 

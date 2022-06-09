@@ -44,7 +44,7 @@ public class RemoteGpuDatacenterEx extends GpuDatacenterEx {
 
 	@Override
 	protected void processGpuMemoryTransfer(SimEvent ev) {
-		GpuTask gt = (GpuTask) ev.getData();
+		RemoteGpuTask gt = (RemoteGpuTask) ev.getData();
 
 		double bandwidth = Double.valueOf(BusTags.PCI_E_3_X16_BW);
 

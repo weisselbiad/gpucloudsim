@@ -49,11 +49,6 @@ public class GpuTask {
 	private final long requestedGddramSize;
 
 	/**
-	 * The communication overhead when executed on a remote GPU.
-	 */
-	private float communicationOverhead;
-
-	/**
 	 * Total number of task block. The length of the task is
 	 * {@link #getBlockLength()} * {@link #numberOfBlocks}
 	 * 
@@ -216,10 +211,10 @@ public class GpuTask {
 	 * @post $none
 	 */
 	public GpuTask(final int taskId, final long blockLength, final int numberOfBlocks, final long inputSize,
-			final long outputSize, final long requestedGddramSize, final float communicationOverhead,
+			final long outputSize, final long requestedGddramSize,
 			final UtilizationModel utilizationModelGpu, final UtilizationModel utilizationModelGddram,
 			final UtilizationModel utilizationModelBw) {
-		this(taskId, blockLength, numberOfBlocks, inputSize, outputSize, requestedGddramSize, communicationOverhead,
+		this(taskId, blockLength, numberOfBlocks, inputSize, outputSize, requestedGddramSize,
 				utilizationModelGpu, utilizationModelGddram, utilizationModelBw, false);
 	}
 
@@ -245,7 +240,7 @@ public class GpuTask {
 	 * @post $none
 	 */
 	public GpuTask(final int taskId, final long blockLength, final int numberOfBlocks, final long inputSize,
-			final long outputSize, final long requestedGddramSize, final float communicationOverhead,
+			final long outputSize, final long requestedGddramSize,
 			final UtilizationModel utilizationModelGpu, final UtilizationModel utilizationModelGddram,
 			final UtilizationModel utilizationModelBw, final boolean record) {
 		status = CREATED;
@@ -261,7 +256,6 @@ public class GpuTask {
 		this.taskInputSize = Math.max(1, inputSize);
 		this.taskOutputSize = Math.max(1, outputSize);
 		this.requestedGddramSize = Math.max(1, requestedGddramSize);
-		this.communicationOverhead = communicationOverhead;
 
 		// Normally, a task is only executed on a resource without being
 		// migrated to others. Hence, to reduce memory consumption, set the
@@ -559,10 +553,6 @@ public class GpuTask {
 	 */
 	public long getTaskOutputSize() {
 		return taskOutputSize;
-	}
-
-	public float getCommunicationOverhead() {
-		return communicationOverhead;
 	}
 
 	/**

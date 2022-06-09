@@ -32,11 +32,11 @@ import org.cloudbus.cloudsim.gpu.VgpuScheduler;
 import org.cloudbus.cloudsim.gpu.VideoCard;
 import org.cloudbus.cloudsim.gpu.allocation.VideoCardAllocationPolicy;
 import org.cloudbus.cloudsim.gpu.allocation.VideoCardAllocationPolicyNull;
-import org.cloudbus.cloudsim.gpu.hardware_assisted.GridGpuVmAllocationPolicyBreadthFirst;
-import org.cloudbus.cloudsim.gpu.hardware_assisted.GridPerformanceVgpuSchedulerFairShare;
-import org.cloudbus.cloudsim.gpu.hardware_assisted.GridVgpuTags;
-import org.cloudbus.cloudsim.gpu.hardware_assisted.GridVideoCardPowerModelK1;
-import org.cloudbus.cloudsim.gpu.hardware_assisted.GridVideoCardTags;
+import org.cloudbus.cloudsim.gpu.hardware_assisted.grid.GridGpuVmAllocationPolicyBreadthFirst;
+import org.cloudbus.cloudsim.gpu.hardware_assisted.grid.GridPerformanceVgpuSchedulerFairShare;
+import org.cloudbus.cloudsim.gpu.hardware_assisted.grid.GridVgpuTags;
+import org.cloudbus.cloudsim.gpu.hardware_assisted.grid.GridVideoCardPowerModelK1;
+import org.cloudbus.cloudsim.gpu.hardware_assisted.grid.GridVideoCardTags;
 import org.cloudbus.cloudsim.gpu.performance.models.PerformanceModel;
 import org.cloudbus.cloudsim.gpu.performance.models.PerformanceModelGpuConstant;
 import org.cloudbus.cloudsim.gpu.power.PowerGpuDatacenter;
@@ -62,7 +62,7 @@ import de.vandermeer.asciitable.AsciiTable;
 /**
  * This example demonstrates the use of gpu package for the simulation of mixed
  * workloads. <br>
- * GPU virtualization mode: hardware-assisted <br>
+ * GPU virtualization mode: GRID <br>
  * Performance Model: on <br>
  * Interference Model: off <br>
  * Power Model: on
@@ -195,7 +195,7 @@ public class CloudSimGpuExample5 {
 		UtilizationModel gddramBwUtilizationModel = new UtilizationModelFull();
 
 		GpuTask gpuTask = new GpuTask(gpuTaskId, taskLength, numberOfBlocks, taskInputSize, taskOutputSize,
-				requestedGddramSize, 0, gpuUtilizationModel, gddramUtilizationModel, gddramBwUtilizationModel);
+				requestedGddramSize, gpuUtilizationModel, gddramUtilizationModel, gddramBwUtilizationModel);
 
 		GpuCloudlet gpuCloudlet = new GpuCloudlet(gpuCloudletId, length, pesNumber, fileSize, outputSize,
 				cpuUtilizationModel, ramUtilizationModel, bwUtilizationModel, gpuTask, false);

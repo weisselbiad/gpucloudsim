@@ -1,4 +1,4 @@
-package org.cloudbus.cloudsim.gpu.hardware_assisted;
+package org.cloudbus.cloudsim.gpu.hardware_assisted.grid;
 
 import java.util.List;
 import java.util.Map.Entry;
