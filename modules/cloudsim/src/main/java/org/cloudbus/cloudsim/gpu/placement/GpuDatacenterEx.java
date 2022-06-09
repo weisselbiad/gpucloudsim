@@ -14,8 +14,6 @@ import org.cloudbus.cloudsim.VmAllocationPolicy;
 import org.cloudbus.cloudsim.core.CloudSim;
 import org.cloudbus.cloudsim.core.CloudSimTags;
 import org.cloudbus.cloudsim.core.SimEvent;
-import org.cloudbus.cloudsim.core.predicates.PredicateType;
-import org.cloudbus.cloudsim.gpu.GpuDatacenter;
 import org.cloudbus.cloudsim.gpu.GpuVm;
 import org.cloudbus.cloudsim.gpu.GpuVmAllocationPolicy;
 import org.cloudbus.cloudsim.gpu.Vgpu;
@@ -57,15 +55,11 @@ public class GpuDatacenterEx extends PowerGpuDatacenter {
 		Entry<GpuVm, Boolean> newVm = new SimpleEntry<GpuVm, Boolean>((GpuVm) ev.getData(), ack);
 		getNewVms().add(newVm);
 	}
-
+	
 	@Override
-	public void processEvent(SimEvent ev) {
-		// if this is the first time processing happens
-		if (CloudSim.clock() == 0.0
-				&& CloudSim.select(getId(), new PredicateType(GpuCloudSimTags.GPU_VM_DATACENTER_PLACEMENT)) == null) {
-			schedule(getId(), getSchedulingInterval(), GpuCloudSimTags.GPU_VM_DATACENTER_PLACEMENT);
-		}
-		super.processEvent(ev);
+	public void startEntity() {
+		schedule(getId(), getSchedulingInterval(), GpuCloudSimTags.GPU_VM_DATACENTER_PLACEMENT);
+		super.startEntity();
 	}
 
 	@Override

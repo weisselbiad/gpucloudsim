@@ -9,9 +9,7 @@ import org.cloudbus.cloudsim.DatacenterCharacteristics;
 import org.cloudbus.cloudsim.Host;
 import org.cloudbus.cloudsim.Storage;
 import org.cloudbus.cloudsim.VmAllocationPolicy;
-import org.cloudbus.cloudsim.core.CloudSim;
 import org.cloudbus.cloudsim.core.SimEvent;
-import org.cloudbus.cloudsim.core.predicates.PredicateType;
 import org.cloudbus.cloudsim.gpu.GpuDatacenter;
 import org.cloudbus.cloudsim.gpu.VideoCard;
 import org.cloudbus.cloudsim.gpu.allocation.VideoCardAllocationPolicy;
@@ -92,15 +90,11 @@ public class PowerGpuDatacenter extends GpuDatacenter {
 			getHostEnergyMap().put(powerGpuHost, hostTotalEnergy);
 		}
 	}
-
+	
 	@Override
-	public void processEvent(SimEvent ev) {
-		// if this is the first time processing happens
-		if (CloudSim.clock() == 0.0
-				&& CloudSim.select(getId(), new PredicateType(GpuCloudSimTags.GPU_VM_DATACENTER_POWER_EVENT)) == null) {
-			schedule(getId(), getSchedulingInterval(), GpuCloudSimTags.GPU_VM_DATACENTER_POWER_EVENT);
-		}
-		super.processEvent(ev);
+	public void startEntity() {
+		schedule(getId(), getSchedulingInterval(), GpuCloudSimTags.GPU_VM_DATACENTER_POWER_EVENT);
+		super.startEntity();
 	}
 
 	@Override
