@@ -149,8 +149,7 @@ public abstract class GpuVmAllocationPolicy extends VmAllocationPolicy {
 	protected void setGpuHostList(List<GpuHost> gpuHostList) {
 		this.gpuHostList = new ArrayList<GpuHost>();
 		for (GpuHost host : gpuHostList) {
-			if (host.getVideoCardAllocationPolicy() != null
-					&& !host.getVideoCardAllocationPolicy().getVideoCards().isEmpty()) {
+			if (host.isGpuEquipped()) {
 				getGpuHostList().add(host);
 			}
 		}

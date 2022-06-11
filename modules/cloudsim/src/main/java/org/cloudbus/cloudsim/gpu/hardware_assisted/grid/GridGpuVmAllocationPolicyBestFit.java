@@ -43,8 +43,7 @@ public class GridGpuVmAllocationPolicyBestFit extends GpuVmAllocationPolicy {
 		// Create nonGpuHost list
 		for (Host host : list) {
 			GpuHost pm = (GpuHost) host;
-			if (pm.getVideoCardAllocationPolicy() == null
-					|| pm.getVideoCardAllocationPolicy().getVideoCards().isEmpty()) {
+			if (!pm.isGpuEquipped()) {
 				nonGpuHostList.add(pm);
 			}
 		}

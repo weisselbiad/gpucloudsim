@@ -72,11 +72,11 @@ public class GpuHost extends Host {
 		}
 		return smallerTime;
 	}
-	
+
 	@Override
 	public boolean isSuitableForVm(Vm vm) {
 		boolean result = vmCreate(vm);
-		if(result) {
+		if (result) {
 			vmDestroy(vm);
 		}
 		return result;
@@ -103,7 +103,7 @@ public class GpuHost extends Host {
 	 * @return
 	 */
 	public boolean hasVideoCard(int videoCardId) {
-		if (getVideoCardAllocationPolicy() == null || getVideoCardAllocationPolicy().getVideoCards().isEmpty()) {
+		if (!isGpuEquipped()) {
 			return false;
 		}
 		for (VideoCard videoCard : getVideoCardAllocationPolicy().getVideoCards()) {
@@ -121,7 +121,7 @@ public class GpuHost extends Host {
 	 * @return
 	 */
 	public boolean hasPgpu(int pgpuId) {
-		if (getVideoCardAllocationPolicy() == null || getVideoCardAllocationPolicy().getVideoCards().isEmpty()) {
+		if (!isGpuEquipped()) {
 			return false;
 		}
 		for (VideoCard videoCard : getVideoCardAllocationPolicy().getVideoCards()) {
@@ -132,6 +132,10 @@ public class GpuHost extends Host {
 			}
 		}
 		return false;
+	}
+
+	public boolean isGpuEquipped() {
+		return getVideoCardAllocationPolicy() != null && !getVideoCardAllocationPolicy().getVideoCards().isEmpty();
 	}
 
 	public void vgpuDestroy(Vgpu vgpu) {
@@ -163,9 +167,7 @@ public class GpuHost extends Host {
 	}
 
 	public Set<Vgpu> getVgpuSet() {
-		if (getVideoCardAllocationPolicy() == null) {
-			return null;
-		} else if (getVideoCardAllocationPolicy().getVideoCards().isEmpty()) {
+		if (!isGpuEquipped()) {
 			return null;
 		}
 		return getVideoCardAllocationPolicy().getVgpuVideoCardMap().keySet();
