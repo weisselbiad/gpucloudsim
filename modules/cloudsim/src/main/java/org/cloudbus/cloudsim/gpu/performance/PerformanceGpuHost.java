@@ -42,7 +42,7 @@ public class PerformanceGpuHost extends GpuHost {
 	public double updateVgpusProcessing(double currentTime) {
 		double smallerTime = Double.MAX_VALUE;
 
-		if (getVideoCardAllocationPolicy() != null) {
+		if (isGpuEquipped()) {
 			List<Vgpu> runningVgpus = new ArrayList<Vgpu>();
 			for (Vgpu vgpu : getVideoCardAllocationPolicy().getVgpuVideoCardMap().keySet()) {
 				if (vgpu.getGpuTaskScheduler().runningTasks() > 0) {

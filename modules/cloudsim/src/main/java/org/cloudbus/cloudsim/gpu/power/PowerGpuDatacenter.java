@@ -54,7 +54,7 @@ public class PowerGpuDatacenter extends GpuDatacenter {
 			getHostCpuEnergyMap().put(powerGpuHost, 0.0);
 			getHostVideoCardEnergyMap().put(powerGpuHost, new HashMap<PowerVideoCard, Double>());
 			VideoCardAllocationPolicy videoCardAllocationPolicy = powerGpuHost.getVideoCardAllocationPolicy();
-			if (videoCardAllocationPolicy != null) {
+			if (powerGpuHost.isGpuEquipped()) {
 				for (PowerVideoCard videoCard : (List<PowerVideoCard>) videoCardAllocationPolicy.getVideoCards()) {
 					getHostVideoCardEnergyMap().get(powerGpuHost).put(videoCard, 0.0);
 				}

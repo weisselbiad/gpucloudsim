@@ -452,7 +452,7 @@ public class CloudSimGpuExample6 {
 				at.addRow("Host " + depth, dft.format(datacenter.getHostCpuEnergyMap().get(host)).toString() + " / "
 						+ dft.format(datacenter.getHostEnergyMap().get(host)).toString());
 				at.addRule();
-				if (host.getVideoCardAllocationPolicy() != null) {
+				if (host.isGpuEquipped()) {
 					for (PowerVideoCard videoCard : (List<PowerVideoCard>) host.getVideoCardAllocationPolicy()
 							.getVideoCards()) {
 						depth = "#" + videoCard.getId() + " / " + depth;

@@ -125,7 +125,7 @@ public class PowerGpuHost extends PerformanceGpuHost {
 	 */
 	public Map<VideoCard, Double> getCurrentVideoCardsPower() {
 		Map<VideoCard, Double> videoCardsPower = new HashMap<VideoCard, Double>();
-		if (getVideoCardAllocationPolicy() != null) {
+		if (isGpuEquipped()) {
 			for (VideoCard videoCard : getVideoCardAllocationPolicy().getVideoCards()) {
 				PowerVideoCard powerVideoCard = (PowerVideoCard) videoCard;
 				videoCardsPower.put(powerVideoCard, powerVideoCard.getPower());

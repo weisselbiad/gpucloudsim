@@ -60,7 +60,7 @@ public class GpuHost extends Host {
 
 	public double updateVgpusProcessing(double currentTime) {
 		double smallerTime = Double.MAX_VALUE;
-		if (getVideoCardAllocationPolicy() != null) {
+		if (isGpuEquipped()) {
 			// Update resident vGPUs
 			for (Vgpu vgpu : getVideoCardAllocationPolicy().getVgpuVideoCardMap().keySet()) {
 				double time = vgpu.updateGpuTaskProcessing(currentTime, getVideoCardAllocationPolicy()
